@@ -29,40 +29,29 @@ class ViewController: UIViewController {
         self.pauseButton.isEnabled = false
     }
     
-    @IBAction func startButton(_ sender: Any) {
+    @IBAction func startButtonTapped(_ sender: Any) {
         if(isRunning) {
             return
         }
         self.startButton.isEnabled = false
         self.pauseButton.isEnabled = true
-        
-        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #Selector(updateTimer), userInfo: nil, repeats: true)
-    
-        }
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
+
     
-    @IBAction func pauseButtonDidTouch(_ sender: Any) {
-        self.startButton.isEnabled = false
-        self.pauseButton.isEnabled = true
-        
-        timer.invalidate()
-        isRunning = true
-        
-    }
-    
-    @IBAction func resetButtonDidTouch(_ sender: Any) {
+    @IBAction func pauseButtonTapped(_ sender: UIButton) {
         self.resetButton.isEnabled = true
         self.startButton.isEnabled = true
         
-        
     }
-    
- 
+
+//
+//
     @objc func updateTimer() {
         counter += 0.1
         timeLabel.text = String(format: "%.1f", counter)
-    
-        
+
+
     }
 
 
