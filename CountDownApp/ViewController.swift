@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         self.pauseButton.isEnabled = false
     }
     
-    @IBAction func startButtonTapped(_ sender: Any) {
+    @IBAction func startButtonTapped(_ sender: UIButton) {
         if(isRunning) {
             return
         }
@@ -45,7 +45,6 @@ class ViewController: UIViewController {
         timer.invalidate()
         
         
-        
     }
 
     @IBAction func resetButtonTapped(_ sender: UIButton) {
@@ -56,13 +55,9 @@ class ViewController: UIViewController {
         
     }
     
-    
     @objc func updateTimer() {
         counter += 0.1
         timeLabel.text = String(format: "%.1f", counter)
-
-
+    
     }
-
-
 }
