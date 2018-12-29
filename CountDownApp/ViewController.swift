@@ -8,7 +8,7 @@
 //try to add more to the UI
 // improve the UI buttons, add buttons,
 // add a firstimer, second timer,
-//if a tiemr goes to a certain number, entire timer changes color
+//if a timer goes to a certain number, entire timer changes color
 
 
 import UIKit
@@ -58,7 +58,7 @@ class ViewController: UIViewController {
         self.startButton.isEnabled = true
         
     }
-    
+//format the time string and interval
     func timeString(time:TimeInterval) -> String {
         
         let hours = Int(time) / 3600
