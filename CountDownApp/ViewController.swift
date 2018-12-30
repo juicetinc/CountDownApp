@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        timeLabel.text = "\(counter)"
+        timeLabel.text = "00:00:00"
         self.startButton.isEnabled = true
         self.pauseButton.isEnabled = false
     }
@@ -55,7 +55,7 @@ class ViewController: UIViewController {
     @IBAction func resetButtonTapped(_ sender: UIButton) {
         timer.invalidate()
         counter = 0
-        timeLabel.text = String(counter)
+        timeLabel.text = "00:00:00"
         self.startButton.isEnabled = true
         
     }
