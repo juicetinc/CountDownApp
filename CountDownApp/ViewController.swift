@@ -16,9 +16,9 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var startButton: UIButton!
-    @IBOutlet weak var pauseButton: UIButton!
-    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var startButton: BounceButton!
+    @IBOutlet weak var pauseButton: BounceButton!
+    @IBOutlet weak var resetButton: BounceButton!
     
     
     var timer = Timer()
@@ -34,30 +34,49 @@ class ViewController: UIViewController {
     }
 
     
-    @IBAction func startButtonTapped(_ sender: UIButton) {
+    @IBAction func startButtonTapped(_ sender: BounceButton) {
         if(isRunning) {
             return
         }
         self.startButton.isEnabled = false
         self.pauseButton.isEnabled = true
+        self.resetButton.isEnabled = true
+        
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.updateTimer), userInfo: nil, repeats: true)
+        
+        // changes the opacity of the startButton when tapped
+        sender.flash()
     }
 
     
-    @IBAction func pauseButtonTapped(_ sender: UIButton) {
-        self.pauseButton.isEnabled = true
+    @IBAction func pauseButtonTapped(_ sender: BounceButton) {
+        if(isRunning) {
+            return
+        }
+        self.pauseButton.isEnabled = false
         self.startButton.isEnabled = true
+        self.resetButton.isEnabled = true
+            
         timer.invalidate()
         
+        // changes the opacity of the pauseButton when tapped
+        sender.flash()
         
     }
 
-    @IBAction func resetButtonTapped(_ sender: UIButton) {
+    @IBAction func resetButtonTapped(_ sender: BounceButton) {
+        if(isRunning) {
+            return
+        }
         timer.invalidate()
         counter = 0
         timeLabel.text = "00:00:00"
         self.startButton.isEnabled = true
+        self.pauseButton.isEnabled = false
+        self.resetButton.isEnabled = false
         
+        // shakes the resetButton when tapped
+        sender.shake()
     }
 //format the time string and interval
     func timeString(time:TimeInterval) -> String {
@@ -67,6 +86,7 @@ class ViewController: UIViewController {
         let seconds = Int(time) % 60
         
         return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
+        
         
     }
     
