@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         self.startButton.isEnabled = true
         self.pauseButton.isEnabled = false
     }
-    
+    //testing git flow
     @IBAction func startButtonTapped(_ sender: Any) {
         if(isRunning) {
             return
