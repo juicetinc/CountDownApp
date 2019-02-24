@@ -19,6 +19,9 @@ class BounceButton: UIButton {
             self.transform = CGAffineTransform.identity
             
         }, completion: nil)
+        
+        print("Number of fingers which touched the screen is: \(touches.count)")
+        
         super.touchesBegan(touches, with: event)
     }
 }
